@@ -1,0 +1,36 @@
+var Koa = require('koa');
+var Router = require('koa-router');
+var gpio = require('rpi-gpio');
+
+var app = new Koa();
+var router = new Router();
+
+app
+    .use(router.routes())
+    .use(router.allowedMethods());
+
+gpio.setup(18,DIR_OUT);
+gpio.setup(22,DIR_OUT);
+
+
+router.get('/teste', async(ctx, next) => 
+
+    ctx.body = await teste();
+
+});
+
+
+function gpio() {
+
+    return new Promise((resolve, reject) => {
+        gpio.write(18,true,(err)=>{
+		if (err) reject(err);
+		
+		resolve();
+	})
+    });
+
+
+};
+
+app.listen(3000);

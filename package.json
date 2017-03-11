@@ -5,6 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "koa": "2",
-    "koa-router": "next"
+    "koa-router": "next",
+    "rpi-gpio": "^0.7.0",
+    "sleep": "^5.1.0"
   }
 }
